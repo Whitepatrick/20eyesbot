@@ -1,7 +1,8 @@
-require_relative 'credentials'
 require 'twitter'
+require_relative 'credentials'
+require_relative 'search'
 
-class Connection
+class BotConnection
 
   def connect_stream
     client = Twitter::Streaming::Client.new do |config|
