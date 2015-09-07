@@ -19,42 +19,34 @@ class RESTClient
     end
   end
 
-  def get_follower_ids
+  def follow_followers
+    bed_time = 3600
     rest_connector.follower_ids.each do |follower_id|
-      rest_connector.follow(follower_id)
+      #rest_connector.follow(follower_id)
       p "Now following #{follower_id}"
+      sleep(bed_time)
     end
   end
 
+  # sends a tweet
   def update_with_txt_file
-    txt_file = File.read("txt_files/tagline.s")
-    p txt_file
-  end
-end
+    bed_time = 43200
+    hashtags = "#followback #mileycyrus #guyfieri #followforfollow"
+    txt_file = File.open("txt_files/tagline.s")
 
-rc = RESTClient.new
-rc.update_with_txt_file
-
-# streaming client
-class StreamingClient
-  def stream_connector
-    client = Twitter::REST::Client.new do |config|
-      config.consumer_key        = CONSUMER_KEY
-      config.consumer_secret     = CONSUMER_SECRET
-      config.access_token        = ACCESS_TOKEN
-      config.access_token_secret = ACCESS_TOKEN_SECRET
+    txt_file.each do |line|
+      #rest_connector.update("#{line.strip} #{hashtags}")
+      p "Now tweeting #{line.strip} #{hashtags}"
+      sleep(bed_time)
     end
   end
 
-  def twitter_stream
-    stream_connector.firehose("operations_ivy").collect do |tweet|
-      p tweet.text
-    end
-  end
 end
 
-=begin
-extra stuff
 rc = RESTClient.new
-rc.get_follower_ids
-=end
+
+rest_threads = []
+rest_threads << Thread.new { rc.update_with_txt_file }
+rest_threads << Thread.new { rc.follow_followers }
+
+rest_threads.each { |i| i.join }

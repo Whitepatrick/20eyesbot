@@ -11,21 +11,16 @@
 "I'd like all your $20 bills in this bag", "To go".
 "Leave my blouse alone! I said Spellcheck, not Spillcheck"
 "MEOW"...SPLAT..."RUFF"...SPLAT...(Raining cats & dogs)
-"Please return stewardess to original upright position"
 "Sometimes a cigar is just a cigar" - Freud
 "Uh honey, a P5 with a 20" monitor is perfect for mail"
 "WHO CARES where Carmen Sandiego is?"
 (A)bort, (R)etry, (F)ail, (G)rab_Hammer
 *IT IS* documented, look under "For Internal Use Only."
 ......64..65...66...67...68...69... "STOP RIGHT THERE!"
-...and I betcha she can say it in 10 different languages!
-...I love children!  They taste just like chicken.
 ...I multi-task, I read in the bathroom.
 ...So simple a child could do it?  Go find me a child!
 1 + 2 = 3; Therefore, 4 + 5 = 6.
 10 days and 18 messages later, "Oh I understand now"
-20 Dumb Blonds in freezer:  Frosted flakes.
-3 stages of sex: Tri-weekly, try weekly, try weakly.
 50 states, and I had to pick one of confusion...
 69, 714, 2112 : Sex, drugs, and Rock and Roll!
 74% of all statistics are made up on the spot
