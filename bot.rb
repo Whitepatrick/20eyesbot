@@ -25,10 +25,15 @@ class RESTClient
       p "Now following #{follower_id}"
     end
   end
+
+  def update_with_txt_file
+    txt_file = File.read("txt_files/tagline.s")
+    p txt_file
+  end
 end
 
 rc = RESTClient.new
-rc.get_follower_ids
+rc.update_with_txt_file
 
 # streaming client
 class StreamingClient
@@ -47,3 +52,9 @@ class StreamingClient
     end
   end
 end
+
+=begin
+extra stuff
+rc = RESTClient.new
+rc.get_follower_ids
+=end
