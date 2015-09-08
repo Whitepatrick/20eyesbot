@@ -4,7 +4,7 @@ require_relative 'credentials'
 # streaming client
 class StreamingClient
   def stream_connector
-    client = Twitter::REST::Client.new do |config|
+    client = Twitter::Streaming::Client.new do |config|
       config.consumer_key        = CONSUMER_KEY
       config.consumer_secret     = CONSUMER_SECRET
       config.access_token        = ACCESS_TOKEN
@@ -13,8 +13,11 @@ class StreamingClient
   end
 
   def twitter_stream
-    stream_connector.firehose("operations_ivy").collect do |tweet|
+    stream_connector.filter(:track "operations_ivy").collect do |tweet|
       p tweet.text
     end
   end
 end
+
+sc = StreamingClient.new
+p sc.twitter_stream
