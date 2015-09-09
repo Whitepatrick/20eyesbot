@@ -12,19 +12,17 @@ class RESTClient
   end
 
   # returns 3 recent tweets of term provided
-  def twitter_search(search_term, options)
-    rest_connector.search(search_term, options).take(3).each do |tweet|
+  # params are amt to return, what to search for, and search opts.
+  def twitter_search(tweet_count = 10, search_term, options)
+    rest_connector.search(search_term, options).take(tweet_count).each do |tweet|
       p tweet.text
       p "*" * 10
     end
   end
 
-  def follow_followers
-    bed_time = 3600
+  def return_followers
     rest_connector.follower_ids.each do |follower_id|
-      #rest_connector.follow(follower_id)
       p "Now following #{follower_id}"
-      sleep(bed_time)
     end
   end
 
@@ -44,9 +42,5 @@ class RESTClient
 end
 
 rc = RESTClient.new
-
-rest_threads = []
-rest_threads << Thread.new { rc.update_with_txt_file }
-rest_threads << Thread.new { rc.follow_followers }
-
-rest_threads.each { |i| i.join }
+rc.return_followers
+rc. twitter_search(5, "operation ivy", result_type: "recent")
