@@ -2,6 +2,9 @@ GEM
   remote: https://rubygems.org/
   specs:
     addressable (2.3.8)
+    anemone (0.7.2)
+      nokogiri (>= 1.3.0)
+      robotex (>= 1.0.0)
     buftok (0.2.0)
     daemons (1.2.3)
     equalizer (0.0.11)
@@ -13,8 +16,12 @@ GEM
     json (1.8.3)
     memoizable (0.4.2)
       thread_safe (~> 0.3, >= 0.3.1)
+    mini_portile (0.6.2)
     multipart-post (2.0.0)
     naught (1.0.0)
+    nokogiri (1.6.6.2)
+      mini_portile (~> 0.6.0)
+    robotex (1.0.0)
     simple_oauth (0.3.1)
     thread_safe (0.3.5)
     twitter (5.14.0)
@@ -33,6 +40,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  anemone
   daemons
   twitter
 
