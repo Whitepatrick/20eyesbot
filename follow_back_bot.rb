@@ -11,27 +11,14 @@ class FollowBackBot
     end
   end
 
-  def follow_back
-    p "Following: "
-    rest_connector.followers.each do |follower|
-      rest_connector.follow(follower)
-      p "#{follower.screen_name}:#{follower.id}"
+  def get_follower_ids
+    follower_list = rest_connector.followers
+    follower_list.each do |follower|
+      #rest_connector.follow(follower_id)
+      p "#{follower.screen_name}"
     end
-  rescue Exception => e
-    rest_connector.update("@operations_ivy :FBB something went wrong - #{e}")
   end
-
-  def get_friends
-    p "Friend with: "
-    rest_connector.friends.each do |friend|
-      p "#{friend.screen_name}:#{friend.id}"
-    end
-  rescue Exception => e
-    rest_connector.update("@operations_ivy :FBB something went wrong - #{e}")
-  end
-
 end
 
 fbb = FollowBackBot.new
-fbb.follow_back
-#fbb.get_friend_ids
+fbb.get_follower_ids
