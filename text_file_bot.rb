@@ -1,8 +1,7 @@
 require 'anemone'
 require 'twitter'
 require 'open-uri'
-require_relative 'credentials'
-require_relative 'hashtags'
+require_relative 'var'
 
 =begin
 Text File Bot LIVES!
@@ -12,9 +11,6 @@ This bot does:
 - grabs a random text file url from the url array
 - begins a tweet cycle that tweets every line and sleeps for a b
 =end
-
-SCRAPE_URL = "http://www.textfiles.com/humor/COMPUTER/"
-
 
 class TextFileBot
 
@@ -49,12 +45,17 @@ class TextFileBot
   def update_with_txt_file(sleep_time)
     file_url = open(get_url_from_url_array)
     file_url.each do |file_line|
+      #rest_connector.update("20eyesbot feels... different... improvements made!")
+      #p "20eyesbot feels... different... improvements made!"
       rest_connector.update("#{file_line.to_s.strip} #{HASHTAGS.sample} #{HASHTAGS.sample}  #{HASHTAGS.sample}")
-      p "#{file_line.to_s.strip} #{HASHTAGS.sample} #{HASHTAGS.sample}  #{HASHTAGS.sample}"
+      p "Now tweeting: #{file_line.to_s.strip} #{HASHTAGS.sample} #{HASHTAGS.sample}  #{HASHTAGS.sample}"
       sleep(sleep_time)
     end
+  rescue Exception => e
+    p "Hey @operations_ivy, something bad happened!"
+    rest_connector.update("Hey @operations_ivy, something bad happened!")
   end
 
 end
 tfb = TextFileBot.new
-tfb.update_with_txt_file(0.5)
+tfb.update_with_txt_file(3600)
