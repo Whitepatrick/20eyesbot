@@ -1,7 +1,7 @@
 require 'anemone'
 require 'twitter'
 require 'open-uri'
-require_relative 'var'
+require_relative 'globals'
 
 =begin
 Text File Bot LIVES!
