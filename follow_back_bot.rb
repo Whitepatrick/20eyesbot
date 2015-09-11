@@ -1,5 +1,5 @@
 require 'twitter'
-require_relative 'credentials'
+require_relative 'globals'
 
 class FollowBackBot
   def rest_connector
@@ -11,14 +11,27 @@ class FollowBackBot
     end
   end
 
-  def get_follower_ids
-    follower_list = rest_connector.followers
-    follower_list.each do |follower|
-      #rest_connector.follow(follower_id)
-      p "#{follower.screen_name}"
+  def follow_back
+    p "Following: "
+    rest_connector.followers.each do |follower|
+      rest_connector.follow(follower)
+      p "#{follower.screen_name}:#{follower.id}"
     end
+  rescue Exception => e
+    rest_connector.update("@operations_ivy :FBB something went wrong - #{e}")
   end
+
+  def get_friends
+    p "Friend with: "
+    rest_connector.friends.each do |friend|
+      p "#{friend.screen_name}:#{friend.id}"
+    end
+  rescue Exception => e
+    rest_connector.update("@operations_ivy :FBB something went wrong - #{e}")
+  end
+
 end
 
 fbb = FollowBackBot.new
-fbb.get_follower_ids
+fbb.follow_back
+#fbb.get_friend_ids

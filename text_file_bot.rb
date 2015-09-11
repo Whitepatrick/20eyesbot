@@ -42,18 +42,18 @@ class TextFileBot
     @url = @url_array.sample
   end
 
-  def update_with_txt_file(sleep_time)
+  def update_with_txt_file(bed_time)
     file_url = open(get_url_from_url_array)
     file_url.each do |file_line|
       #rest_connector.update("20eyesbot feels... different... improvements made!")
       #p "20eyesbot feels... different... improvements made!"
       rest_connector.update("#{file_line.to_s.strip} #{HASHTAGS.sample} #{HASHTAGS.sample}  #{HASHTAGS.sample}")
       p "Now tweeting: #{file_line.to_s.strip} #{HASHTAGS.sample} #{HASHTAGS.sample}  #{HASHTAGS.sample}"
-      sleep(sleep_time)
+      sleep(bed_time)
     end
   rescue Exception => e
-    p "Hey @operations_ivy, something bad happened! #{e}"
-    rest_connector.update("Hey @operations_ivy, something bad happened! #{e}")
+    p "@operations_ivy :TFB something bad happened! #{e}"
+    rest_connector.update("@operations_ivy :TFB something bad happened! #{e}")
   end
 
 end
