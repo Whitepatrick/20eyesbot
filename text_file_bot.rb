@@ -52,8 +52,8 @@ class TextFileBot
       sleep(sleep_time)
     end
   rescue Exception => e
-    p "Hey @operations_ivy, something bad happened!"
-    rest_connector.update("Hey @operations_ivy, something bad happened!")
+    p "Hey @operations_ivy, something bad happened! #{e}"
+    rest_connector.update("Hey @operations_ivy, something bad happened! #{e}")
   end
 
 end
