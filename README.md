@@ -1,32 +1,25 @@
 # 20eyesbot
+[20eyesbot twitter page](https://twitter.com/20eyesBot)
 
-20eyesbot is a twitter bot mostly
-for me to play around with and give
-me a reason to explore the twitter
-API and also try adding PostgreSQL
-functionality to it.
+**20eyesbot** is probably annoying  
+**20eyesbot** uses the [sferik/twitter](https://github.com/sferik/twitter) gem
+**20eyesbot** requires a configuration file called globals.rb (see below)  
+**20eyesbot** will probably never be finished but it will have lots of functions!  
 
-## What the bot does (or will do ;)):
-###mentions & dm's
-store any mention or DM into a postgres db
-  - display stored tweet and DM data on 20eyes.org
-reply to any mention with
-  - "i serve the kwisatz haderach, @operations_ivy."
-
-###announces jenkins info
-retweet anything that says:
-  - 20 eyes
-  - twenty eyes
-  - 20eyes
-  - twentyeyes
-
-  =begin
-  Text File Bot LIVES!
-  This bot does:
-  - takes a predefined url stored in a global variable (SCRAPE_URL)
-    **update** - scraping a randomly selected linke, found in globals
-  - returns an array of all links (files) on page
-    **update** -
-  - grabs a random text file url from the url array
+## What the bot does:
+### txt_updatr:
+- Scrapes a URL for all links on it. For my uses I'm typically using
+textfiles.com but will probably also update to attrition.org stuff too
+- Picks a random text file from the scraped links and starts tweeting out
+single lines.
+  - weeds out blank lines and lines including bastard operator from hell stuff (very boring :()
+- If something bad happens it tweets publically to me
   - begins a tweet cycle that tweets every line and sleeps for a b
-  =end
+- Sleeps for 70 seconds
+
+### searchr:
+- searches for a given string and returns a set amount of tweets
+- I'll eventually use this to start adding on follower_list
+
+### followr:
+- follows every user following @20eyesbot
