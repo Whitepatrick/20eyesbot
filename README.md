@@ -19,3 +19,14 @@ retweet anything that says:
   - twenty eyes
   - 20eyes
   - twentyeyes
+
+  =begin
+  Text File Bot LIVES!
+  This bot does:
+  - takes a predefined url stored in a global variable (SCRAPE_URL)
+    **update** - scraping a randomly selected linke, found in globals
+  - returns an array of all links (files) on page
+    **update** -
+  - grabs a random text file url from the url array
+  - begins a tweet cycle that tweets every line and sleeps for a b
+  =end
