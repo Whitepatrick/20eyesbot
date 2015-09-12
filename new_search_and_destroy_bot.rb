@@ -3,7 +3,11 @@ require_relative 'globals'
 
 class SearchAndDestroyBot
 
+  attr_reader :options, :limit
 
+  def initialize
+
+  end
 
 
   def rest_connector
@@ -17,14 +21,13 @@ class SearchAndDestroyBot
 
   def twitter_search(limit, search_term, options)
     rest_connector.search(search_term, result_type: options).take(limit).each do |tweet|
-      puts "\n"
-      p "#{tweet.user.screen_name} user has #{tweet.user.followers_count} followers and has tis to say about SmartBrief: #{tweet.text}"
-      puts "\n"
-      sleep(1)
+       tweet.id
+      p "#{tweet.source} just said #{tweet.text}"
+      p "*" * 10
     end
   end
 
 end
 
 sadb = SearchAndDestroyBot.new
-sadb.twitter_search(10, "smartbrief", "recent")
+sadb.twitter_search(10, "metallica", "recent")

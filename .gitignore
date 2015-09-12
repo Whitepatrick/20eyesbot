@@ -35,6 +35,4 @@ build/
 .rvmrc
 .gitignore
 globals.rb
-globals.var
-snippets.rb
 scratch.rb
