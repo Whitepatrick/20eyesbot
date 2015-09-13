@@ -1,0 +1,43 @@
+require 'anemone'
+require 'twitter'
+require 'open-uri'
+require_relative 'globals'
+require_relative 'bot_connector'
+
+class TextFileBot < BotConnector
+
+  def initialize
+    @url_array = Array.new
+    #@url
+  end
+
+  def get_url_array
+    arr = Array.new
+    Anemone.crawl(SCRAPE_URL.sample, :threads => 10, :discard_page_bodies => true) do |anemone|
+      anemone.skip_links_like /bofh/, /BOFH/
+      anemone.on_every_page { |page| update_with_txt_file(page) }
+      #anemone.on_every_page { |page| arr.push(page.url.to_s)}
+    end
+    arr
+  end
+
+  def get_url_from_url_array
+    @url_array = get_url_array
+    @url_array.each { |url| update_with_txt_file(url) } unless url == "http://www.textfiles.com/humor/COMPUTER/BOFH/"
+  end
+
+  def update_with_txt_file(url)
+    file_url = open(url)
+    file_url.each do |file_line|
+      #rest_connector.update("#{file_line.to_s.strip} #{HASHTAGS.sample} #{HASHTAGS.sample}  #{HASHTAGS.sample}") unless file_line.chomp.empty?
+      p "#{file_line.to_s.strip} #{HASHTAGS.sample} #{HASHTAGS.sample}  #{HASHTAGS.sample}"
+      sleep(0.0025)
+    end
+  rescue Exception => e
+    p "Hey @operations_ivy, something bad happened! #{e}"
+    #rest_connector.update("Hey @operations_ivy, something bad happened! #{e}")
+  end
+
+end
+tfb = TextFileBot.new
+tfb.get_url_array

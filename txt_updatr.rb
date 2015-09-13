@@ -8,36 +8,33 @@ class TextFileBot < BotConnector
 
   def initialize
     @url_array = Array.new
-    @url
   end
 
-  def get_url_array
-    arr = Array.new
-    Anemone.crawl(SCRAPE_URL.sample, :threads => 10, :discard_page_bodies => true) do |anemone|
-      anemone.skip_links_like /bofh/, /BOFH/
-      anemone.on_every_page { |page| arr.push(page.url.to_s)}
+  def crawl_for_urls
+    SCRAPE_URL.each do |scrape_url|
+      Anemone.crawl(scrape_url, :threads => 10, :discard_page_bodies => true) do |anemone|
+        anemone.skip_links_like /bofh/, /BOFH/
+        anemone.on_every_page { |page| @url_array.push(page.url.to_s)}
+      end
     end
-    arr
+    @url_array = @url_array - SCRAPE_URL
   end
 
-  def get_url_from_url_array
-    @url_array = get_url_array
-    @url_array.delete_if { |i| i == "http://www.textfiles.com/humor/COMPUTER/BOFH/" }
-    @url = @url_array.sample
-  end
-
-  def update_with_txt_file
-    file_url = open(get_url_from_url_array)
-    file_url.each do |file_line|
-      rest_connector.update("#{file_line.to_s.strip} #{HASHTAGS.sample} #{HASHTAGS.sample}  #{HASHTAGS.sample}") unless file_line.chomp.empty?
-      p "#{file_line.to_s.strip} #{HASHTAGS.sample} #{HASHTAGS.sample}  #{HASHTAGS.sample}"
-      sleep(70)
+  def tweet_lines
+    crawl_for_urls.each do |url|
+      file_url = open(url)
+      file_url.each do |line|
+        rest_connector.update("#{line.to_s.strip} #{HASHTAGS.sample} #{HASHTAGS.sample}") unless line.chomp.empty?
+        p "#{line.to_s.strip} #{HASHTAGS.sample} #{HASHTAGS.sample}" unless line.chomp.empty?
+        sleep(120)
+      end
     end
   rescue Exception => e
     p "Hey @operations_ivy, something bad happened! #{e}"
     rest_connector.update("Hey @operations_ivy, something bad happened! #{e}")
   end
-
 end
-tfb = TextFileBot.new
-tfb.update_with_txt_file
+
+cf = TextFileBot.new
+#cf.crawl_for_urls
+cf.tweet_lines
