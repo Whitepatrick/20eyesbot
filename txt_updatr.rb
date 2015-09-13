@@ -21,7 +21,7 @@ class TextFileBot < BotConnector
   end
 
   def tweet_lines
-    crawl_for_urls.each do |url|
+    crawl_for_urls.shuffle.each do |url|
       file_url = open(url)
       file_url.each do |line|
         rest_connector.update("#{line.to_s.strip} #{HASHTAGS.sample} #{HASHTAGS.sample}") unless line.chomp.empty?
