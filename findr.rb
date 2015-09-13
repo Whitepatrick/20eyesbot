@@ -5,9 +5,9 @@ require_relative 'bot_connector'
 class FindAndFollowBot < BotConnector
 
   def find_and_follow
-    HASHTAGS.reverse.each do |tag|
+    HASHTAGS.each do |tag|
       puts "following users using the tag: #{tag}"
-      rest_connector.search(tag, result_type: "recent").take(5).each do |tweet|
+      rest_connector.search(tag, result_type: "recent").take(2).each do |tweet|
         next if tweet.user.screen_name == "20eyesbot"
         rest_connector.follow(tweet.user.id)
         p "Now following: #{tweet.user.screen_name}"
