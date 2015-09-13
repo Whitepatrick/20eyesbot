@@ -11,7 +11,7 @@ class FindAndFollowBot < BotConnector
         next if tweet.user.screen_name == "20eyesbot"
         rest_connector.follow(tweet.user.id)
         p "Now following: #{tweet.user.screen_name}"
-        sleep(1.33)
+        sleep(61)
       end
     end
     rest_connector.update("Hey @operations_ivy, I've finished your unholy biding.")
