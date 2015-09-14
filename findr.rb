@@ -7,7 +7,7 @@ class FindAndFollowBot < BotConnector
   def find_and_follow
     HASHTAGS.each do |tag|
       puts "following users using the tag: #{tag}"
-      rest_connector.search(tag, result_type: "recent").take(3).each do |tweet|
+      rest_connector.search(tag, skip_status: true, result_type: "recent").take(3).each do |tweet|
         next if tweet.user.id == "3305842048"
         rest_connector.follow(tweet.user.id)
         p "Now following: #{tweet.user.screen_name}"
