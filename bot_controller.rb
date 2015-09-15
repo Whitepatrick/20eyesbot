@@ -4,11 +4,11 @@ what to do and when. will work on
 this later
 =end
 
-require_relative 'txt_updatr'
-require_relative 'followr'
-require_relative 'searchr'
-require_relative 'streamr'
-require_relative 'findr'
+require_relative 'updater'
+require_relative 'follower'
+require_relative 'searcher'
+require_relative 'streamer'
+require_relative 'finder'
 
 swarm = []
 fbb = FollowBackBot.new

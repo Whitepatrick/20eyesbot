@@ -4,7 +4,7 @@ require_relative 'globals'
 # connection class, returns a new client
 # object when requested.
 
-class BotConnector
+class Connector
   def rest_connector
     client = Twitter::REST::Client.new do |config|
       config.consumer_key        = CONSUMER_KEY
