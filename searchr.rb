@@ -3,7 +3,7 @@ require_relative 'connector'
 
 class Searcher < Connector
 
-  def initialize(limit, search_term)
+  def initialize(search_term)
     @search_term = search_term
   end
 
@@ -11,9 +11,9 @@ class Searcher < Connector
     rest_connector.search(@search_term, result_type: "recent")
   end
 
-  def process_twitter_search_results
+  def print_twitter_search_results
     twitter_search.each do |tweet|
-      p tweet.text
+      p tweet.id
     end
   end
 
