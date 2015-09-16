@@ -5,6 +5,7 @@ class Searcher < Connector
 
   def initialize(search_term)
     @search_term = search_term
+    @limit = 3
   end
 
   def twitter_search
@@ -12,8 +13,8 @@ class Searcher < Connector
   end
 
   def print_twitter_search_results
-    twitter_search.each do |tweet|
-      p tweet.id
+    twitter_search.take(@limit).each do |tweet|
+      tweet
     end
   end
 
