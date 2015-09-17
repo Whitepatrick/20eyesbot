@@ -7,12 +7,15 @@ GEM
       robotex (>= 1.0.0)
     buftok (0.2.0)
     daemons (1.2.3)
-    diff-lcs (1.2.5)
+    dbi (0.4.5)
+      deprecated (= 2.0.1)
+    deprecated (2.0.1)
     domain_name (0.5.24)
       unf (>= 0.0.5, < 1.0.0)
     equalizer (0.0.10)
     faraday (0.9.1)
       multipart-post (>= 1.2, < 3)
+    gli (2.13.2)
     http (0.9.6)
       addressable (~> 2.3)
       http-cookie (~> 1.0)
@@ -23,28 +26,26 @@ GEM
     http-form_data (1.0.1)
     http_parser.rb (0.6.0)
     json (1.8.3)
+    json2csv (0.0.4)
+      gli (~> 2.11, >= 2.11.0)
+      json_pure (~> 1.8.1)
+      multi_json (~> 1.10.0)
+      rake (~> 10.3, >= 10.3.2)
+      terminal-table (~> 1.4, >= 1.4.5)
+    json_pure (1.8.2)
     memoizable (0.4.2)
       thread_safe (~> 0.3, >= 0.3.1)
     mini_portile (0.6.2)
+    multi_json (1.10.1)
     multipart-post (2.0.0)
     naught (1.1.0)
     nokogiri (1.6.6.2)
       mini_portile (~> 0.6.0)
+    pg (0.18.3)
+    rake (10.4.2)
     robotex (1.0.0)
-    rspec (3.3.0)
-      rspec-core (~> 3.3.0)
-      rspec-expectations (~> 3.3.0)
-      rspec-mocks (~> 3.3.0)
-    rspec-core (3.3.2)
-      rspec-support (~> 3.3.0)
-    rspec-expectations (3.3.1)
-      diff-lcs (>= 1.2.0, < 2.0)
-      rspec-support (~> 3.3.0)
-    rspec-mocks (3.3.2)
-      diff-lcs (>= 1.2.0, < 2.0)
-      rspec-support (~> 3.3.0)
-    rspec-support (3.3.0)
     simple_oauth (0.3.1)
+    terminal-table (1.5.2)
     thread_safe (0.3.5)
     twitter (5.15.0)
       addressable (~> 2.3)
@@ -67,8 +68,7 @@ PLATFORMS
 DEPENDENCIES
   anemone
   daemons
-  rspec
+  dbi
+  json2csv
+  pg
   twitter
-
-BUNDLED WITH
-   1.10.3

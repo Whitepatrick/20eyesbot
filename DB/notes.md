@@ -1,4 +1,4 @@
-#POSTGRES NOTES  
+# POSTGRES NOTES  
 
 ## Libs installed  
 ###System Dependencies -
